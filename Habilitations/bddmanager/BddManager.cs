@@ -29,7 +29,7 @@ namespace Habilitations.bddmanager
         }
 
         /// <summary>
-        /// Création d'une seule instance de la classe.
+        /// Création d'une seule instance de la classe
         /// </summary>
         /// <param name="stringConnect">chaine de connexion</param>
         /// <returns>instance unique de la classe</returns>
