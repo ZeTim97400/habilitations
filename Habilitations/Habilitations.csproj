@@ -79,6 +79,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="view\FrmHabilitations.resx">
+      <DependentUpon>FrmHabilitations.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="habilitations_bddDataSet.xsc">
       <DependentUpon>habilitations_bddDataSet.xsd</DependentUpon>
     </None>
