@@ -369,7 +369,7 @@ namespace Habilitations.view
 
         private void txtNom_TextChanged(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            string nouveauNom = txtNom.Text;
         }
 
         #endregion

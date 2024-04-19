@@ -1,6 +1,8 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
+
 namespace Habilitations.bddmanager
 {
     /// <summary>
@@ -63,7 +65,7 @@ namespace Habilitations.bddmanager
         /// <param name="stringQuery">requête select</param>
         /// <param name="parameters">dictoinnaire contenant les parametres</param>
         /// <returns>liste de tableaux d'objets contenant les valeurs des colonnes</returns>
-        public List<Object[]> ReqSelect(string stringQuery, Dictionary<string, object> parameters = null)
+        public List<object[]> ReqSelect(string stringQuery, Dictionary<string, object> parameters = null)
         {
             MySqlCommand command = new MySqlCommand(stringQuery, connection);
             if (!(parameters is null))
@@ -76,10 +78,10 @@ namespace Habilitations.bddmanager
             command.Prepare();
             MySqlDataReader reader = command.ExecuteReader();
             int nbCols = reader.FieldCount;
-            List<Object[]> records = new List<object[]>();
+            List<object[]> records = new List<object[]>();
             while (reader.Read())
             {
-                Object[] attributs = new Object[nbCols];
+                object[] attributs = new object[nbCols];
                 reader.GetValues(attributs);
                 records.Add(attributs);
             }
@@ -87,5 +89,15 @@ namespace Habilitations.bddmanager
             return records;
         }
 
+        /// <summary>
+        /// Ferme la connexion à la base de données.
+        /// </summary>
+        public void CloseConnection()
+        {
+            if (connection != null && connection.State != ConnectionState.Closed)
+            {
+                connection.Close();
+            }
+        }
     }
 }
